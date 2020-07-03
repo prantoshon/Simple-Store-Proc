@@ -1,0 +1,39 @@
+CREATE PROCEDURE EmployeeInfo 
+    -- Add the parameters for the stored procedure here  
+    @Pin nvarchar(30)  
+      
+AS  
+BEGIN  
+    -- SET NOCOUNT ON added to prevent extra result sets from  
+    -- interfering with SELECT statements.  
+    SET NOCOUNT ON;  
+  
+    Select * From hrd.Employee   
+    where PIN like '%'+@Pin+'%'  
+          
+END 
+
+EXEC EmployeeInfo   @Pin = '01916'
+--------------------------------------
+CREATE PROCEDURE Insertdata  
+@Id varchar(50),  
+@Name varchar(25),  
+@Age varchar(15)  
+  
+AS  
+BEGIN  
+    -- SET NOCOUNT ON added to prevent extra result sets from  
+    -- interfering with SELECT statements.  
+    SET NOCOUNT ON;  
+  
+    Insert into dbo.[Pranto_Personal](Id,Name,Age)   
+           Values (@Id,@Name, @Age)  
+  
+END  
+GO 
+
+exec Insertdata @Id='1', @Name ='Pranto', @Age='24'
+
+
+
+
